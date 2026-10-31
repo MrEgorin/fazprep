@@ -19,18 +19,27 @@ The software is completely free and open-source for:
 ## Key Features
 
 - **Input Flexibility**:
-  - Direct SMILES string input.
-  - Structure file upload: SDF, MOL, PDB, and MOL2 formats.
+  - Direct single SMILES string input.
+  - Multi-SMILES batch text input (one SMILES per line with optional molecule identifiers).
+  - Structure file upload: `.smi`, `.txt`, `.sdf`, `.mol`, `.pdb`, and `.mol2` formats.
+
+- **Explicit Hydrogen Addition**:
+  - All input structures are automatically converted to all-atom representations with explicit hydrogen atoms added via `Chem.AddHs`.
+  - 3D spatial coordinates are generated for all hydrogens during distance geometry embedding and energy minimization.
 
 - **Conformer Generation**:
   - Distance-geometry stochastic sampling using the **ETKDGv3** algorithm (Experimental-Torsion Knowledge Distance Geometry version 3).
   - Configurable ensemble size (5 to 200+ conformers) and random seeds for strict reproducibility.
-  - Automated hydrogen addition and valence verification.
 
 - **Force Field Energy Minimization**:
   - **MMFF94s** (Merck Molecular Force Field 94s) default parameterization for organic drug-like molecules.
   - Automated fallback to the **UFF** (Universal Force Field) if unparameterized elements or functional groups are encountered.
   - Automatic identification and extraction of the lowest-energy conformer.
+
+- **Single-Click Batch Export**:
+  - **Unified Combined SDF**: export the single best 3D conformer for every molecule into one consolidated SDF file (`all_best_conformers_v3000.sdf`) with one click.
+  - **Consolidated ZIP Archive**: download all individual PDB, SDF, and MOL2 structures plus the summary CSV report in a single ZIP file.
+  - **Summary Report CSV**: tabular report containing molecule names, SMILES, formulas, atom counts, minimal energies, and force fields.
 
 - **Standardized Multi-Format Export**:
   - **PDB**: optimized for molecular docking (AutoDock Vina, Glide, LeDock) and visualization (PyMOL, ChimeraX).
@@ -39,7 +48,6 @@ The software is completely free and open-source for:
 
 - **Organized Workspace Archiving**:
   - Automated run versioning saved into sequential directories (`results/run_1`, `results/run_2`, etc.).
-  - Direct file download buttons within the web interface.
 
 ---
 
