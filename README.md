@@ -88,6 +88,18 @@ From the repository directory:
 streamlit run app.py
 ```
 
+Or using the Python module launcher:
+
+```bash
+python -m streamlit run app.py
+```
+
+On Windows, you can also simply double-click or run:
+
+```cmd
+run.bat
+```
+
 Open your web browser at `http://localhost:8501`.
 
 ### 2. Python API Integration
